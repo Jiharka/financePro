@@ -1,0 +1,10 @@
+@CHARSET "UTF-8";
+
+
+h2 {
+	 color: #00a3cc;
+}
+
+p.form-control-static{
+	font-size: small;
+}

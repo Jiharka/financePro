@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+<title>SkillsUp Project</title>
+
+<!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+	<div class="container">
+		<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+		<div class="jumbotron">
+			<h2>Outcome Details</h2>
+			<div>
+				<form class="form-horizontal" th:object="${outcome}"
+					th:action="@{/outcome}" method="post">
+					<input type="hidden" th:field="*{id}" />
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Planned outcome(UAH):</label>
+						<div class="col-sm-9">
+							<input type="number" class="form-control" th:field="*{planned}" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Fact outcome(UAH):</label>
+						<div class="col-sm-9">
+							<input type="number" class="form-control" th:field="*{fact}" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Comments:</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" th:field="*{comments}" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Category:</label> <select
+							name="categId" th:field="*{category}">
+							<option th:each="obj : ${allCateg}" th:text="${obj.name}"
+								th:value="${obj.id}"></option>
+						</select>
+					</div>
+					<div class="row">
+						<button type="submit" class="btn btn-default">Submit</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+<title>SkillsUp Project</title>
+
+<!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+	<div class="container">
+		<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+		<div class="jumbotron">
+			<div>
+				<h2>Categories List</h2>
+				<table class="table table-bordered">
+					<tr>
+						<th>Id</th>
+						<!-- <th>Income Id</th> -->
+						<th>Name</th>
+						<th>View</th>
+						<th>Edit</th>
+						<th>Delete</th>
+					</tr>
+					<tr th:each="category : ${categories}">
+						<td th:text="${category.id}">Id</td>
+						<td th:text="${category.name}">Name</td>
+						<td><a th:href="${'/category/' + category.id}">View</a></td>
+						<td><a
+							th:href="${'/category/edit/' + category.id}">Edit</a></td>
+						<!-- Show 'Delete' btn only for those categories that was not set for any Outcome -->
+						<td><div th:if="${categsNames.contains(category.name)}">
+								<a th:href="${'/category/delete/' + category.id}">Delete</a>
+							</div></td>
+
+					</tr>
+				</table>
+				<a href="#" th:href="@{/category/new}" class="btn btn-info"
+					role="button">Add Category  <span
+					class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

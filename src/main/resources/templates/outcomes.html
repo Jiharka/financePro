@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+<title>SkillsUp Project</title>
+
+<!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+	<div class="container">
+		<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+		<div class="jumbotron">
+			<div th:if="${not #lists.isEmpty(outcomes)}">
+				<h2>Outcome List</h2>
+				<table class="table table-bordered">
+					<tr>
+						<th>Id</th>
+						<th>Planned</th>
+						<th>Fact</th>
+						<th>Category</th>
+						<th>Comments</th>
+						<th>View</th>
+						<th>Edit</th>
+						<th>Delete</th>
+					</tr>
+					<tr th:each="outcome : ${outcomes}">
+						<td th:text="${outcome.id}"><a href="/income/${income.id}">Id</a></td>
+						<td th:text="${outcome.planned}">Planned</td>
+						<td th:text="${outcome.fact}">Fact</td>
+						<td th:text="${outcome.category.name}">Category</td>
+						<td th:text="${outcome.comments}">Comments</td>
+						<td><a th:href="${'/outcome/' + outcome.id}">View</a></td>
+						<td><a th:href="${'/outcome/edit/' + outcome.id}">Edit</a></td>
+						<td><a th:href="${'/outcome/delete/' + outcome.id}">Delete</a></td>
+					</tr>
+					<tr>
+						<th>Total</th>
+						<th th:text="${plannedSum}">Planned</th>
+						<th th:text="${factSum}">Fact</th>
+					</tr>
+				</table>
+			</div>
+			<div th:if="${#lists.isEmpty(outcomes)}">
+				<h2>Any Outcome does not exist</h2>
+			</div>
+			<a href="#" th:href="@{/outcome/new}" class="btn btn-info"
+				role="button">Add new Outcome <span
+				class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+		</div>
+	</div>
+</body>
+</html>
