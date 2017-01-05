@@ -6,4 +6,4 @@ Back-end: Java Core, Spring Boot, Spring MVC, Spring Data, Hibernate, HSQLDB, Mo
 
 Front-end: Thymeleaf, CSS, jquery, bootstrap
 
-[deployed to Herouku](https://financepro.herokuapp.com/)
+[deployed to Heroku](https://financepro.herokuapp.com/)
